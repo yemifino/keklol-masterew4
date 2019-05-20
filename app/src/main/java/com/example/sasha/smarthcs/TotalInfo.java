@@ -14,18 +14,18 @@ public class TotalInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_info);
-        int j = MainActivity.index;
-        ArrayList<Bill> history = MainActivity.user_base.get(j).getHistory();
-        Bill last = history.get(history.size() - 1);
-        int cost = 8855;
+
         TextView resource = findViewById(R.id.resource_t);
         resource.setTextSize(27);
         resource.setText("К оплате:");
         TextView sum = findViewById(R.id.sum_t);
         sum.setTextSize(27);
-        sum.setText(Integer.toString(cost) + " Рублей");
+        sum.setText(String.valueOf(Integer.valueOf(MainActivity.GSV.get(0))+
+                Integer.valueOf(MainActivity.GSV.get(1))+
+                Integer.valueOf(MainActivity.GSV.get(2))));
         RecyclerView bill_list = findViewById(R.id.bill_list);
-        bill_list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        bill_list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+                LinearLayoutManager.VERTICAL,false));
         RecyclerViewAdapter5 adapter = new RecyclerViewAdapter5(getResources());
         bill_list.setAdapter(adapter);
     }

@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.sasha.smarthcs.ProfileActivity.cards3;
+
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
     interface OnResourceSelected {
@@ -33,7 +35,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.name.setText("Дата : ");
-        viewHolder.namet.setText( ProfileActivity.cards3.get(i)+"."+MainActivity.year);
+        if (i<4){
+            viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year);}
+        else { viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year_pre);}
         viewHolder.cost.setText("Цена : ");
         viewHolder.costt.setText((CharSequence) ProfileActivity.Water_cards.get(i));
     }
