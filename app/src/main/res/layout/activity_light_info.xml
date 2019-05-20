@@ -13,7 +13,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/light"
         app:layout_constraintBottom_toTopOf="@id/values"
-        android:text="500 Р/МВт/ч"
+        android:text="6,67 Р/МВт/ч"
         android:textSize="30dp"
         android:textColor="@color/black"
         android:fontFamily="@font/courier"

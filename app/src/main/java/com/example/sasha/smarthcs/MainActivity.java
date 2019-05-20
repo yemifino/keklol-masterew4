@@ -29,14 +29,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
    public static ArrayList<Card> history = new ArrayList<>();
     static ArrayList<Card> cards = new ArrayList<>();
+    static ArrayList<String> GSV = new ArrayList<>();
 
     static ArrayList<User> user_base = new ArrayList<>();
     public static Retrofit retrofit;
     public static int index = 0;
-    public static String LOCAL = "http://192.168.1.12:5000/";
+    public static double gas_ideal = 9.22;
+    public static double water_ideal = 44.56;
+    public static double light_ideal = 6.67;
+
+    public static String LOCAL = "http://192.168.1.9:5000/";
     public static String LOGIN;
     public static ArrayList<String> arrayList =new ArrayList<>();
-    public static String year;
+    public static String year="2019";
+    public static String year_pre="2018";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     void openProfile() {
         Retrofit retrofit = new Retrofit.Builder() .baseUrl(LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
         final API api = retrofit.create(API.class);
@@ -96,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 cards.add(new Card("Газ",Integer.valueOf(arrayList.get(1))));
 
                 cards.add(new Card("Свет",Integer.valueOf(arrayList.get(2))));
+                GSV.add(arrayList.get(0));
+                GSV.add(arrayList.get(1));
+                GSV.add(arrayList.get(2));
 
                 int sum = Integer.valueOf(arrayList.get(0)) + Integer.valueOf(arrayList.get(1)) + Integer.valueOf(arrayList.get(2));
 

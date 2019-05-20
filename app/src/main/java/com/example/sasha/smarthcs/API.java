@@ -17,6 +17,12 @@ public interface API {
     @POST("/get_data/{type}")
     Call<ResursePOL> getFullResources(@Body PostData ResursePOL ,@Query("type") String type);
 
+    @POST("/hasg")
+    Call<has_gas> getGas(@Body POST_GSV has_gas);
 
+    @POST("/hasl")
+    Call<has_light> getLight(@Body POST_GSV has_light);
 
+    @POST("/hasw")
+    Call<has_water> getWater(@Body POST_GSV has_water);
 }

@@ -15,19 +15,16 @@ public class GazInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaz_info);
         int j = MainActivity.index;
-        ArrayList<Bill> history = MainActivity.user_base.get(j).getHistory();
-        Bill last = history.get(history.size() - 1);
-        int w = last.sum_g;
-        double cost = MainActivity.gas_resurse(w);
-        int first = (int)(cost);
-        int second = (int)((cost - first) * 100);
-        String res = Integer.toString(first) + "." + (Integer.toString(second).length() == 1 ? "0" : "") + Integer.toString(second) + " м³";
+
+
+
+
         TextView resource = findViewById(R.id.resource_g);
         resource.setTextSize(27);
-        resource.setText(res);
+        resource.setText((String.valueOf((int)((Integer.valueOf(MainActivity.GSV.get(0))/MainActivity.gas_ideal))) +" " +"м³"));
         TextView sum = findViewById(R.id.sum_g);
         sum.setTextSize(27);
-        sum.setText(Integer.toString(last.sum_g) + " Рублей");
+        sum.setText(MainActivity.GSV.get(0)+" "+"Рублей");
         RecyclerView bill_list = findViewById(R.id.bill_list);
         bill_list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(getResources());

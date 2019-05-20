@@ -35,12 +35,12 @@ public class RecyclerViewAdapter5 extends RecyclerView.Adapter<RecyclerViewAdapt
         viewHolder.name.setText("Дата : ");
         viewHolder.namet.setText( ProfileActivity.cards3.get(i)+"."+MainActivity.year);
         viewHolder.cost.setText("Цена : ");
-        viewHolder.costt.setText("8850");
+        viewHolder.costt.setText(ProfileActivity.Total_cards.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return ProfileActivity.Dat_cards.size();
+        return ProfileActivity.Total_cards.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

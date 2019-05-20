@@ -38,14 +38,16 @@ public class RecyclerViewAdapter4 extends RecyclerView.Adapter<RecyclerViewAdapt
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
 
         viewHolder.name.setText("Дата : ");
-        viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year);
+        if (i<4){
+        viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year);}
+        else { viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year_pre);}
         viewHolder.cost.setText("Цена : ");
-        viewHolder.costt.setText( Dat_cards.get(0).cost);
+        viewHolder.costt.setText(ProfileActivity.Water_cards.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return 8 ;
+        return 6 ;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

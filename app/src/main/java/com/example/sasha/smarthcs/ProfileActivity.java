@@ -40,10 +40,13 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 import static java.security.AccessController.getContext;
 
 public class ProfileActivity extends AppCompatActivity {
-    static ArrayList<Dat> Dat_cards = new ArrayList<>();
+    static ArrayList<String> Gas_cards = new ArrayList<>();
+    static ArrayList<String> Water_cards = new ArrayList<>();
+    static ArrayList<String> Light_cards = new ArrayList<>();
+    static ArrayList<String> Total_cards = new ArrayList<>();
     public String gas="gas";
     static ArrayList<Integer> cards3 = new ArrayList<>();
-    private static final String LOCAL = "http://192.168.1.8:5000/";
+    private static final String LOCAL = "http://192.168.1.9:5000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +60,12 @@ public class ProfileActivity extends AppCompatActivity {
         cards3.add(3,1);
         cards3.add(4,12);
         cards3.add(5,11);
+onGas();
+onLight();
+onWater();
+onTotal();
 
 
-        openProfile();
         /*Retrofit retrofit = new Retrofit.Builder() .baseUrl(LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
         API api = retrofit.create(API.class);
         Call<Reply> call = api.getFullResources(new Request(MainActivity.LOGIN),"gas");
@@ -121,7 +127,87 @@ public class ProfileActivity extends AppCompatActivity {
 
         bill_list.setAdapter(adapter);
         Checkout.attach(getSupportFragmentManager());}
-    void openProfile() {
+    public void onGas(){
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
+        final API api = retrofit.create(API.class);
+        Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
+        call.enqueue(new Callback<has_gas>() {
+            @Override
+            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+                assert response.body() != null;
+                List<String> arrayList=response.body().getGas();
+                Gas_cards.add(0,arrayList.get(0));
+                Gas_cards.add(1,arrayList.get(1));
+                Gas_cards.add(2,arrayList.get(2));
+                Gas_cards.add(3,arrayList.get(3));
+                Gas_cards.add(4,arrayList.get(4));
+                Gas_cards.add(5,arrayList.get(5));
+
+            }
+
+            @Override
+            public void onFailure(Call<has_gas> call, Throwable t) {
+
+            }
+        });
+
+    }
+    void onTotal(){
+        for (int i=0;i<Water_cards.size();i++ )
+        Total_cards.add(i,String.valueOf((Integer.valueOf(Water_cards.get(i))
+                +Integer.valueOf(Light_cards.get(i))+Integer.valueOf(Gas_cards.get(i )))));
+    }
+    public void onWater(){
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
+        final API api = retrofit.create(API.class);
+        Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
+        call.enqueue(new Callback<has_gas>() {
+            @Override
+            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+                assert response.body() != null;
+                List<String> arrayList=response.body().getGas();
+                Water_cards.add(0,arrayList.get(0));
+                Water_cards.add(1,arrayList.get(1));
+                Water_cards.add(2,arrayList.get(2));
+                Water_cards.add(3,arrayList.get(3));
+                Water_cards.add(4,arrayList.get(4));
+                Water_cards.add(5,arrayList.get(5));
+
+            }
+
+            @Override
+            public void onFailure(Call<has_gas> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public void onLight(){
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
+        final API api = retrofit.create(API.class);
+        Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
+        call.enqueue(new Callback<has_gas>() {
+            @Override
+            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+                assert response.body() != null;
+                List<String> arrayList=response.body().getGas();
+                Light_cards.add(0,arrayList.get(0));
+                Light_cards.add(1,arrayList.get(1));
+                Light_cards.add(2,arrayList.get(2));
+               Light_cards.add(3,arrayList.get(3));
+                Light_cards.add(4,arrayList.get(4));
+                Light_cards.add(5,arrayList.get(5));
+
+            }
+
+            @Override
+            public void onFailure(Call<has_gas> call, Throwable t) {
+
+            }
+        });
+
+    }
+   /* void openProfile() {
         Retrofit retrofit = new Retrofit.Builder() .baseUrl(LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
         final API api = retrofit.create(API.class);
       Call<ResursePOL> call =api.getFullResources(new PostData(MainActivity.LOGIN), "light" );
@@ -151,7 +237,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     @Override
     protected void onDestroy() {

@@ -13,7 +13,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/water"
         app:layout_constraintBottom_toTopOf="@id/values"
-        android:text="100 Р/м³"
+        android:text=" 44.56 Р/м³"
         android:textSize="30dp"
         android:textColor="@color/black"
         android:fontFamily="@font/courier"

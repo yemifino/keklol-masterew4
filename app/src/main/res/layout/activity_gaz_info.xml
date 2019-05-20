@@ -10,7 +10,7 @@
         android:id="@+id/rate_g"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
-        android:text="6.5 Р/м³"
+        android:text="9.22 Р/м³"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@id/values"
         app:layout_constraintLeft_toLeftOf="parent"
