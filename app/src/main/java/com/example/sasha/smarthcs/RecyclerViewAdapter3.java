@@ -39,12 +39,22 @@ public class RecyclerViewAdapter3 extends RecyclerView.Adapter<RecyclerViewAdapt
             viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year);}
         else { viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year_pre);}
         viewHolder.cost.setText("Цена : ");
-        viewHolder.costt.setText((CharSequence) ProfileActivity.Light_cards.get(0));
+        String kek;
+        String lol =ProfileActivity.Light_cards.get(i);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,3);
+        lol=ProfileActivity.removeChar(lol,3);
+        lol=ProfileActivity.removeChar(lol,3);
+
+        kek=lol;
+        viewHolder.costt.setText(kek+" "+"Рублей");
     }
 
     @Override
     public int getItemCount() {
-        return ProfileActivity.Light_cards.size();
+        return 6;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -25,4 +25,7 @@ public interface API {
 
     @POST("/hasw")
     Call<has_water> getWater(@Body POST_GSV has_water);
+
+    @POST("/total")
+    Call<has_total> getTotal(@Body POST_GSV has_total);
 }

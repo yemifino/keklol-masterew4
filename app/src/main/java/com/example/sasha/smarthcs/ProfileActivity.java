@@ -46,7 +46,11 @@ public class ProfileActivity extends AppCompatActivity {
     static ArrayList<String> Total_cards = new ArrayList<>();
     public String gas="gas";
     static ArrayList<Integer> cards3 = new ArrayList<>();
+    public int g=0;
     private static final String LOCAL = "http://192.168.1.9:5000/";
+     public  static String removeChar(String i,int pos){
+         return i.substring(0,pos)+i.substring(pos+1);
+     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +137,7 @@ onTotal();
         Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
         call.enqueue(new Callback<has_gas>() {
             @Override
-            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+            public void onResponse(@NotNull Call<has_gas> call, @NotNull Response<has_gas> response) {
                 assert response.body() != null;
                 List<String> arrayList=response.body().getGas();
                 Gas_cards.add(0,arrayList.get(0));
@@ -153,19 +157,39 @@ onTotal();
 
     }
     void onTotal(){
-        for (int i=0;i<Water_cards.size();i++ )
-        Total_cards.add(i,String.valueOf((Integer.valueOf(Water_cards.get(i))
-                +Integer.valueOf(Light_cards.get(i))+Integer.valueOf(Gas_cards.get(i )))));
+        Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
+        final API api = retrofit.create(API.class);
+        //  Call<has_gas> call = api.getWater(new POST_GSV(MainActivity.LOGIN));
+Call<has_total> call=api.getTotal(new POST_GSV(MainActivity.LOGIN));
+call.enqueue(new Callback<has_total>() {
+    @Override
+    public void onResponse(Call<has_total> call, Response<has_total> response) {
+        List<String> arrayLst =response.body().getTotal();
+        Total_cards.add(0,arrayLst.get(0));
+        Total_cards.add(1,arrayLst.get(1));
+        Total_cards.add(2,arrayLst.get(2));
+        Total_cards.add(3,arrayLst.get(3));
+        Total_cards.add(4,arrayLst.get(4));
+        Total_cards.add(5,arrayLst.get(5));
+
+    }
+
+    @Override
+    public void onFailure(Call<has_total> call, Throwable t) {
+
+    }
+});
     }
     public void onWater(){
         Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
         final API api = retrofit.create(API.class);
-        Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
-        call.enqueue(new Callback<has_gas>() {
+      //  Call<has_gas> call = api.getWater(new POST_GSV(MainActivity.LOGIN));
+        Call<has_water> call=api.getWater(new POST_GSV(MainActivity.LOGIN));
+        call.enqueue(new Callback<has_water>() {
             @Override
-            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+            public void onResponse(@NotNull Call<has_water> call, @NotNull Response<has_water> response) {
                 assert response.body() != null;
-                List<String> arrayList=response.body().getGas();
+                List<String> arrayList=response.body().getWater();
                 Water_cards.add(0,arrayList.get(0));
                 Water_cards.add(1,arrayList.get(1));
                 Water_cards.add(2,arrayList.get(2));
@@ -176,21 +200,23 @@ onTotal();
             }
 
             @Override
-            public void onFailure(Call<has_gas> call, Throwable t) {
+            public void onFailure(Call<has_water> call, Throwable t) {
 
             }
+
         });
 
     }
     public void onLight(){
         Retrofit retrofit = new Retrofit.Builder() .baseUrl(MainActivity.LOCAL) .addConverterFactory(GsonConverterFactory.create()) .build();
         final API api = retrofit.create(API.class);
-        Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
-        call.enqueue(new Callback<has_gas>() {
+      //  Call<has_gas> call = api.getGas(new POST_GSV(MainActivity.LOGIN));
+        Call<has_light>call = api.getLight(new POST_GSV(MainActivity.LOGIN));
+        call.enqueue(new Callback<has_light>() {
             @Override
-            public void onResponse(Call<has_gas> call, Response<has_gas> response) {
+            public void onResponse(@NotNull Call<has_light> call, @NotNull Response<has_light> response) {
                 assert response.body() != null;
-                List<String> arrayList=response.body().getGas();
+                List<String> arrayList=response.body().getLight();
                 Light_cards.add(0,arrayList.get(0));
                 Light_cards.add(1,arrayList.get(1));
                 Light_cards.add(2,arrayList.get(2));
@@ -201,7 +227,7 @@ onTotal();
             }
 
             @Override
-            public void onFailure(Call<has_gas> call, Throwable t) {
+            public void onFailure(Call<has_light> call, Throwable t) {
 
             }
         });
@@ -266,7 +292,9 @@ onTotal();
         int sum = 0;
         Checkout.tokenize(
                 this,
-                new Amount(new BigDecimal(Integer.toString(sum)), Currency.getInstance("RUB")),
+                new Amount(new BigDecimal(String.valueOf(Integer.valueOf(MainActivity.GSV.get(0))+
+                        Integer.valueOf(MainActivity.GSV.get(1))+
+                        Integer.valueOf(MainActivity.GSV.get(2)))), Currency.getInstance("RUB")),
                 new ShopParameters(
                         "Умный ЖКХ",
                         "Оплата ЖКХ",

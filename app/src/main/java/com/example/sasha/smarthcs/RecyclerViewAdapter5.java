@@ -44,7 +44,7 @@ public class RecyclerViewAdapter5 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @Override
     public int getItemCount() {
-        return ProfileActivity.Total_cards.size();
+        return 6;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

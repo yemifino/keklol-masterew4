@@ -33,6 +33,7 @@ public class RecyclerViewAdapter4 extends RecyclerView.Adapter<RecyclerViewAdapt
                 .inflate(R.layout.card2_layout,viewGroup,false));
     }
 
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
@@ -42,7 +43,19 @@ public class RecyclerViewAdapter4 extends RecyclerView.Adapter<RecyclerViewAdapt
         viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year);}
         else { viewHolder.namet.setText( String.valueOf(cards3.get(i))+"."+MainActivity.year_pre);}
         viewHolder.cost.setText("Цена : ");
-        viewHolder.costt.setText(ProfileActivity.Water_cards.get(i));
+        String kek;
+        String lol =ProfileActivity.Gas_cards.get(i);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,0);
+        lol=ProfileActivity.removeChar(lol,3);
+        lol=ProfileActivity.removeChar(lol,3);
+        lol=ProfileActivity.removeChar(lol,3);
+
+        kek=lol;
+
+
+        viewHolder.costt.setText(kek+" "+"Рублей");
     }
 
     @Override
