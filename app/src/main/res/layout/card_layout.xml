@@ -11,14 +11,14 @@
     <android.support.constraint.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/cardview_shadow_start_color"
+
         >
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="75dp"
             android:layout_height="60dp"
-            android:src="@drawable/gaz"
+            android:src="@drawable/provod"
             card_view:layout_constraintLeft_toLeftOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"

@@ -1,7 +1,9 @@
 package com.example.sasha.smarthcs;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NotNull Call<Reply> call, @NotNull Response<Reply> response) {
 
                         if (response.body().reply.equals("1")) {
+                          
                             Toast.makeText(getApplicationContext(), "Успешно", Toast.LENGTH_LONG).show();
                             LOGIN = cur_name;
                             openProfile();

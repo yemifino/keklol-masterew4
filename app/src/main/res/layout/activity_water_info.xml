@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WaterInfo">
+    tools:context=".WaterInfo"
+   >
     <ImageView
         android:layout_width="match_parent"
-        android:background="@color/wallet_holo_blue_light"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
+        android:background="#81D4FA"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="75dp"
@@ -28,7 +30,7 @@
         android:layout_width="110dp"
         android:layout_height="88dp"
         android:id="@+id/water"
-        android:src="@drawable/water"
+        android:src="@drawable/luzha"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/rate_w"

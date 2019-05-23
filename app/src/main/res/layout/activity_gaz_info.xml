@@ -4,35 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GazInfo">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="400dp"
-    tools:ignore="MissingConstraints"
-    android:background="@color/colorAccent"/>
+    tools:context=".GazInfo"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="379dp"
+        android:background="#ff9e80"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/rate_g"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
+        android:fontFamily="@font/courier"
         android:text="9.22 Р/м³"
+        android:textColor="@color/black"
         android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/values"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/gaz"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/black"
-        android:fontFamily="@font/courier"
-        android:textStyle="bold"/>
+        app:layout_constraintVertical_bias="0.192" />
 
     <ImageView
+        android:id="@+id/gaz"
         android:layout_width="110dp"
         android:layout_height="88dp"
-        android:id="@+id/gaz"
-        android:src="@drawable/gaz"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/gaz_temny"
         app:layout_constraintLeft_toRightOf="@id/rate_g"
-        app:layout_constraintBottom_toTopOf="@id/values"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/values"
@@ -45,33 +48,35 @@
         app:layout_constraintTop_toBottomOf="@id/gaz">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
             android:id="@+id/resource_g"
-            android:text="-"
-            android:textAlignment="center"
-            android:textSize="30dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/sum_g"
-            android:textColor="@color/black"
-            android:fontFamily="@font/courier"
-            android:textStyle="bold"/>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:id="@+id/sum_g"
+            android:fontFamily="@font/courier"
             android:text="-"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/sum_g"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/resource_g"
-            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sum_g"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
             android:fontFamily="@font/courier"
-            android:textStyle="bold"/>
+            android:text="-"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resource_g" />
     </android.support.constraint.ConstraintLayout>
     <ImageView
         android:layout_width="300dp"

@@ -17,7 +17,7 @@ public class LightInfo extends AppCompatActivity {
 
         TextView resource = findViewById(R.id.resource_l);
         resource.setTextSize(27);
-        resource.setText((String.valueOf((int)((Integer.valueOf(MainActivity.GSV.get(2))/MainActivity.light_ideal))) +" " +"Р/МВт/ч"));
+        resource.setText("Потрачено"+":"+" "+(String.valueOf((int)((Integer.valueOf(MainActivity.GSV.get(2))/MainActivity.light_ideal))) +" " +"Р/МВт/ч"));
         TextView sum = findViewById(R.id.sum_l);
         sum.setTextSize(27);
         sum.setText(MainActivity.GSV.get(2)+" "+"Рублей");

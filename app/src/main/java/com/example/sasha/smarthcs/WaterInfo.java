@@ -20,7 +20,7 @@ public class WaterInfo extends AppCompatActivity {
 
         TextView resource = findViewById(R.id.resource_w);
         resource.setTextSize(27);
-        resource.setText((String.valueOf((int)((Integer.valueOf(MainActivity.GSV.get(2))/MainActivity.water_ideal))) +" " +"м³"));
+        resource.setText("Потрачено"+":"+" "+(String.valueOf((int)((Integer.valueOf(MainActivity.GSV.get(2))/MainActivity.water_ideal))) +" " +"м³"));
         TextView sum = findViewById(R.id.sum_w);
         sum.setTextSize(27);
         sum.setText(MainActivity.GSV.get(2)+" "+"Рублей");

@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LightInfo">
+    tools:context=".LightInfo"
+   >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="346dp"
+        android:background="#FFF59D"
+        tools:ignore="MissingConstraints" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="400dp"
@@ -27,7 +33,7 @@
         android:layout_width="110dp"
         android:layout_height="88dp"
         android:id="@+id/light"
-        android:src="@drawable/light"
+        android:src="@drawable/provod"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/rate_l"
