@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NotNull Call<Reply> call, @NotNull Response<Reply> response) {
 
                         if (response.body().reply.equals("1")) {
-                          
+
                             Toast.makeText(getApplicationContext(), "Успешно", Toast.LENGTH_LONG).show();
                             LOGIN = cur_name;
                             openProfile();
